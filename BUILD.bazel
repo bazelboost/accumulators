@@ -1,0 +1,29 @@
+
+cc_library(
+	name = "accumulators",
+	visibility = ["//visibility:public"],
+	includes = [
+		"include/",
+	],
+	hdrs = glob([
+		"include/boost/**/*.hpp",
+		"include/boost/**/*.ipp",
+	]),
+	srcs = [
+	],
+	defines = [
+	],
+	deps = [
+		"@com_github_bazelboost_config//:config",
+		"@com_github_bazelboost_assert//:assert",
+		"@com_github_bazelboost_mpl//:mpl",
+		"@com_github_bazelboost_concept_check//:concept_check",
+		"@com_github_bazelboost_preprocessor//:preprocessor",
+		"@com_github_bazelboost_parameter//:parameter",
+		"@com_github_bazelboost_static_assert//:static_assert",
+		"@com_github_bazelboost_range//:range",
+		"@com_github_bazelboost_throw_exception//:throw_exception",
+		"@com_github_bazelboost_array//:array",
+		"@com_github_bazelboost_detail//:detail"
+	],
+)
