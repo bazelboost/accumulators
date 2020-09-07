@@ -1,0 +1,22 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+_public_hdrs = [
+    "include/boost/*.hpp",
+    "include/boost/accumulators/*.hpp",
+    "include/boost/accumulators/framework/*.hpp",
+    "include/boost/accumulators/numeric/*.hpp",
+    "include/boost/accumulators/statistics/*.hpp",
+]
+
+cc_library(
+    name = "accumulators_internal",
+    hdrs = glob(["include/boost/**/*.hpp"], exclude = _public_hdrs),
+)
+
+cc_library(
+    name = "accumulators",
+    visibility = ["//visibility:public"],
+    includes = ["include"],
+    hdrs = glob(_public_hdrs),
+    deps = [":accumulators_internal"],
+)
